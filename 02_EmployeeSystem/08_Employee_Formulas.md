@@ -1,20 +1,34 @@
 # 08 Employee Formulas
 
+# 设计原则
+
+所有公式优先保证可解释性。
+
+玩家能够理解影响来源。
+
+---
+
 # 工作效率
 
-效率 = 执行力
-× 情绪系数
-× Trait系数
-× 部门系数
+FinalEfficiency =
+Execution
+× EmotionModifier
+× TraitModifier
+× DepartmentModifier
+× RelationshipModifier
+
+最终限制：0.25 ~ 3.0
 
 ---
 
 # 情绪系数
 
-情绪系数 =
-(快乐 + 归属感)
-/
-(压力 + 焦虑)
+EmotionModifier =
+1
++ Happiness/200
++ Belonging/200
+- Stress/250
+- Anxiety/250
 
 结果限制：0.5~2.0
 
@@ -22,29 +36,52 @@
 
 # 离职概率
 
-离职率 =
-基础值
-+
-压力影响
-+
-低归属感影响
-+
-市场环境影响
+MonthlyLeaveChance =
+BaseChance
++ StressFactor
++ AnxietyFactor
+- BelongingFactor
+- SalaryFactor
+
+最低0%
+最高95%
 
 ---
 
 # 创意产出
 
-创意值 =
-创造力
-× 快乐系数
-× 团队协同系数
+CreativityOutput =
+Creativity
+× HappinessModifier
+× TeamSynergy
+
+创意项目额外获得20%加成。
 
 ---
 
 # 学习速度
 
-经验获取 =
-项目经验
-× 学习能力
-× 导师加成
+ExperienceGain =
+ProjectXP
+× LearningModifier
+× MentorBonus
+
+---
+
+# 团队协同
+
+TeamSynergy =
+1 + AverageRelationship / 200
+
+范围：0.5~1.5
+
+---
+
+# 压力增长
+
+StressGain =
+ProjectPressure
++ OvertimePressure
+- RecoveryValue
+
+每日结算。
